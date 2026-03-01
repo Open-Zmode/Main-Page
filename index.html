@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Zmode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:      #070a11;
+  --panel:   rgba(9,13,22,0.96);
+  --card:    rgba(14,20,34,0.9);
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.14);
+  --txt:     #e0eaf8;
+  --muted:   #516070;
+  --muted2:  #7a90a4;
+  --accent:  #9147ff;
+  --vipps:   #ff5b24;
+  --font:    'Space Grotesk', system-ui, sans-serif;
+  --display: 'Bebas Neue', sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--font);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 100px;
+  gap: 48px;
+}
+
+/* ── LOGO — big, sits high ── */
+.logo-section {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HEADER (description only) ── */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+  position: relative;
+  z-index: 1;
+  margin-top: 120px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display);
+  font-size: 16px; color: #fff; line-height: 1;
+}
+.logo-name {
+  font-family: var(--display);
+  font-size: 72px; letter-spacing: 4px; color: var(--txt);
+  line-height: 1;
+  opacity: 0;
+  animation: fadeUp .5s ease forwards;
+}
+.logo-name span { color: var(--accent); }
+
+.tagline {
+  font-size: 16px;
+  color: var(--muted2);
+  font-weight: 400;
+  max-width: 480px;
+  line-height: 1.55;
+}
+
+/* ── PROJECT CARDS ── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 440px;
+  opacity: 0;
+  animation: fadeUp .5s .12s ease forwards;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(20px);
+  transition: background .2s, border-color .2s, transform .2s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: var(--card-color, var(--accent));
+}
+.card:hover {
+  background: rgba(20,28,48,.95);
+  border-color: rgba(255,255,255,.2);
+  transform: translateX(4px);
+}
+
+.card-icon { font-size: 24px; line-height: 1; flex-shrink: 0; }
+
+.card-info { flex: 1; min-width: 0; }
+.card-title {
+  font-family: var(--display);
+  font-size: 20px; letter-spacing: .5px; color: var(--txt); line-height: 1;
+}
+.card-desc {
+  font-size: 12px; color: var(--muted); font-weight: 400;
+  margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.card-arrow {
+  font-size: 16px; color: var(--muted);
+  transition: color .2s, transform .2s;
+  flex-shrink: 0;
+}
+.card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
+
+/* soon variant */
+.card.soon {
+  border-style: dashed;
+  border-color: var(--border);
+  background: transparent;
+  cursor: default;
+  opacity: .5;
+}
+.card.soon:hover { transform: none; border-color: var(--border); background: transparent; }
+.card.soon .card-arrow { display: none; }
+
+/* ── FOOTER ACTIONS ── */
+.footer-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp .5s .24s ease forwards;
+}
+
+.btn-vipps {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--vipps); color: #fff; text-decoration: none;
+  font-family: var(--font); font-weight: 600; font-size: 14px;
+  padding: 12px 24px; border-radius: 8px; letter-spacing: .2px;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 0 24px rgba(145,71,255,.15);
+}
+.btn-vipps:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(255,91,36,.4); }
+.vipps-v {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; color: var(--vipps);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 11px; flex-shrink: 0;
+}
+
+.footer-note {
+  font-size: 11px; color: var(--muted);
+  text-align: center; line-height: 1.5;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .card-desc { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="logo-section">
+  <div class="logo">
+    <div class="logo-name">Open <span>Zmode</span></div>
+  </div>
+</div>
+
+<main class="page">
+
+  <div class="header">
+    <p class="tagline">My name is Ruben. I make websites and tools as a hobby and release them publicly, hoping someone finds them useful. Everything is free, no ads no junk & no AI crap.</p>
+  </div>
+
+  <div class="projects">
+
+    <a class="card" href="https://open-zmode.github.io/Oslo-transit/" target="_blank" rel="noopener" style="--card-color:#f97316">
+      <div class="card-icon">🚇</div>
+      <div class="card-info">
+        <div class="card-title">Oslo Transit</div>
+        <div class="card-desc">Live metro, tram & train tracker for Oslo</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <div class="card soon" style="--card-color:var(--muted)">
+      <div class="card-icon">🌦</div>
+      <div class="card-info">
+        <div class="card-title">Coming soon</div>
+        <div class="card-desc">Next project in the works</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-actions">
+    <p class="footer-note">Donations are not available at this time.</p>
+  </div>
+
+</main>
+
+</body>
+</html>
