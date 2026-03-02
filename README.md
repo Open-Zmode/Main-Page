@@ -7,7 +7,7 @@ I build websites and tools and release them publicly — no ads, no junk.
 
 ## 🌐 Website
 
-[https://open-zmode.github.io/Main-Paige](https://open-zmode.github.io/Main-Paige/)
+[https://open-zmode.github.io/Main-Paige](https://open-zmode.github.io/Main-Page/)
 
 ---
 
@@ -44,3 +44,4 @@ Made by **Ruben** — find me on:
 - YouTube: [ZRubis09Zmode](https://youtube.com/@ZRubis09Zmode)
 
 - GitHub: [open-zmode](https://github.com/open-zmode)
+
