@@ -15,7 +15,7 @@ I build websites and tools and release them publicly — no ads, no junk.
 
 | Project | Description | Link |
 |---|---|---|
-| **Oslo Transit** | Live metro, tram & train tracker for Oslo | [open-zmode.github.io/Oslo-transit](https://open-zmode.github.io/Oslo-transit/) |
+| **Oslo Transit** | Live metro, tram & train tracker for Oslo | [github.com/open-zmode/Oslo-transit/](https://github.com/open-zmode/Oslo-transit/) |
 | More coming soon | Next project in the works | — |
 
 ---
@@ -42,4 +42,5 @@ Feel free to make pull reqests expand feutures and compatibility.
 Made by **Ruben** — find me on:
 - Twitch: [ZRubis09Zmode](https://twitch.tv/ZRubis09Zmode)
 - YouTube: [ZRubis09Zmode](https://youtube.com/@ZRubis09Zmode)
+
 - GitHub: [open-zmode](https://github.com/open-zmode)
